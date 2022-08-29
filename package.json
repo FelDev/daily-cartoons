@@ -1,0 +1,18 @@
+{
+  "name": "daily_cartoons",
+  "version": "1.0.0",
+  "description": "Package to send myself daily cartoons I scrape from various websites.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo 'not testing this silly project'"
+  },
+  "author": "feldev",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "dotenv": "^16.0.1",
+    "got": "^12.3.1",
+    "jsdom": "^20.0.0"
+  }
+}
