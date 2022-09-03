@@ -2,6 +2,7 @@ import { send } from './mailer.js'
 import { getJdmImg } from './scrapers/journalDeMontreal.js'
 import { getSoleilImg } from './scrapers/leSoleil.js'
 import { getDevoirImg } from './scrapers/leDevoir.js'
+import { getXkcdImg } from './scrapers/xkcd.js'
 
 const handler =  async () => {
   console.log(`@doing it...`)
@@ -10,9 +11,11 @@ const handler =  async () => {
     const jdmImg = await getJdmImg()
     const soleilImg = await getSoleilImg()
     const devoirImg = await getDevoirImg()
-    console.log('index: ', jdmImg)
-    console.log('index: ', soleilImg)
-    console.log('index: ', devoirImg)
+    const xkcdImg = await getXkcdImg()
+    console.log('jdmImg: ', jdmImg)
+    console.log('soleilImg: ', soleilImg)
+    console.log('devoirImg: ', devoirImg)
+    console.log('xkcdImg: ', xkcdImg)
 
     let emailHTML = `
       Voici ton email: 
@@ -27,6 +30,7 @@ const handler =  async () => {
       <p>Le Soleil</p>
       <br>
       <img src="${soleilImg}">
+      ${xkcdImg}
       <br>
       -Félix
     `
