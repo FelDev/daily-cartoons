@@ -9,11 +9,16 @@ export async function getXkcdImg() {
     // updates every monday, wednesday and friday
     return ""
   }
-  const response = await got(url)
-  const doc = new JSDOM(response.body).window.document
-  const xkcdImg = doc.querySelector("#comic img").src
-  const xkcdImgClean = xkcdImg.replace("//", "https://")
-  return `<p>xkcd</p>
-  <br>
-  <img src="${xkcdImgClean}">`
+  try {
+    const response = await got(url)
+    const doc = new JSDOM(response.body).window.document
+    const xkcdImg = doc.querySelector("#comic img").src
+    const xkcdImgClean = xkcdImg.replace("//", "https://")
+    
+    return `<h2>xkcd</h2>
+    <br>
+    <img src="${xkcdImgClean}">`
+  } catch (err) {
+    return "<p>xkcd ça chié...</p>"
+  }
 }

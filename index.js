@@ -20,16 +20,9 @@ const handler =  async () => {
     let emailHTML = `
       Voici ton email: 
       <br>
-      <p>Le Devoir</p>
-      <br>
-      <img src="${devoirImg}">
-      <br>
-      <p>Journal de Montréal</p>
-      <br>
-      <img src="${jdmImg}">
-      <p>Le Soleil</p>
-      <br>
-      <img src="${soleilImg}">
+      ${devoirImg}
+      ${jdmImg}
+      ${soleilImg}
       ${xkcdImg}
       <br>
       -Félix
