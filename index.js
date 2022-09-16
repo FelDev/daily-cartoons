@@ -3,19 +3,23 @@ import { getJdmImg } from './scrapers/journalDeMontreal.js'
 import { getSoleilImg } from './scrapers/leSoleil.js'
 import { getDevoirImg } from './scrapers/leDevoir.js'
 import { getXkcdImg } from './scrapers/xkcd.js'
+import { getPresseImg } from './scrapers/laPresse.js'
 
 const handler =  async () => {
   console.log(`@doing it...`)
   try {
-    // #TODO promise.all()
-    const jdmImg = await getJdmImg()
-    const soleilImg = await getSoleilImg()
-    const devoirImg = await getDevoirImg()
-    const xkcdImg = await getXkcdImg()
+    const [jdmImg, soleilImg, devoirImg, xkcdImg, presseImg] = await Promise.all([
+      getJdmImg(),
+      getSoleilImg(),
+      getDevoirImg(),
+      getXkcdImg(),
+      getPresseImg()
+  ]);
     console.log('jdmImg: ', jdmImg)
     console.log('soleilImg: ', soleilImg)
     console.log('devoirImg: ', devoirImg)
     console.log('xkcdImg: ', xkcdImg)
+    console.log('presseImg: ', presseImg)
 
     let emailHTML = `
       Voici ton email: 
@@ -24,6 +28,7 @@ const handler =  async () => {
       ${jdmImg}
       ${soleilImg}
       ${xkcdImg}
+      ${presseImg}
       <br>
       -Félix
     `
