@@ -7,7 +7,7 @@ export async function getSoleilImg() {
   try {
     const response = await got(url)
     const doc = new JSDOM(response.body).window.document
-    const img = doc.querySelector("._full-article-cartoon_145kag img").src
+    const img = doc.querySelector(".promo-image img").src
     
     return `<h2>Le Soleil</h2>
     <br>
