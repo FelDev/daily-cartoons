@@ -12,3 +12,5 @@ I might write about this...
 ## Deploying
 
 zip the contents of this directory, and upload to AWS lambda.
+
+<!-- US East (N. Virginia) -->
