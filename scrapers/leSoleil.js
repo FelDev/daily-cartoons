@@ -1,14 +1,14 @@
 import got from 'got'
 import jsdom from 'jsdom'
 const { JSDOM } = jsdom
-const url = "https://www.lesoleil.com/opinions/caricatures"
+const baseURL = "https://www.lesoleil.com"
 
 export async function getSoleilImg() {
   try {
-    const resPage1 = await got(url)
+    const resPage1 = await got(`${baseURL}/opinions/caricatures`)
     const doc1 = new JSDOM(resPage1.body).window.document
     const cartoonUrl = doc1.querySelector("div.promo-image > a").href
-    const resPage2 = await got(`https://www.lesoleil.com${cartoonUrl}`)
+    const resPage2 = await got(`${baseURL}${cartoonUrl}`)
     const doc2 = new JSDOM(resPage2.body).window.document
     const img = doc2.querySelector(".lead-art-wrapper img").src
     
