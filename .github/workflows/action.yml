@@ -1,7 +1,7 @@
 name: run
 on:
   schedule:
-    - cron: '28 4 * * *'
+    - cron: '28 11 * * *'
 env:
   SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
   EMAILS_TO: ${{ secrets.EMAILS_TO }}
