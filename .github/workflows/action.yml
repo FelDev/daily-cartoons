@@ -1,5 +1,6 @@
 name: run
 on:
+  push:
   schedule:
     - cron: '*/15 * * * *'
 jobs:
