@@ -3,6 +3,10 @@ on:
   push:
   schedule:
     - cron: '*/15 * * * *'
+env:
+  SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+  EMAILS_TO: ${{ secrets.EMAILS_TO }}
+  EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
 jobs:
   my-job:
     runs-on: ubuntu-latest
