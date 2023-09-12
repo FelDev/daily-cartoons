@@ -1,0 +1,27 @@
+name: run
+on:
+  schedule:
+    - cron: '0 8 * * *'
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Cache NPM dependencies
+        id: cache-npm
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-prod-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-prod-
+      - name: Install NPM dependencies
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: npm install
+      - name: run index.js
+        run: node index

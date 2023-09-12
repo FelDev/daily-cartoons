@@ -39,4 +39,6 @@ const handler = async () => {
     console.log('@err: ', err)
   }
 }
-export { handler };
+
+handler() // local / github actions style
+// export { handler }; // AWS Lambda style
