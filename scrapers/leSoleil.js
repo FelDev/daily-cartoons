@@ -12,7 +12,10 @@ export async function getSoleilImg() {
     const doc2 = new JSDOM(resPage2.body).window.document
     const img = doc2.querySelector(".lead-art-wrapper img").src
     
-    return `<h2>Le Soleil</h2>
+    return `
+    <a href="${url}">
+      <h2>Le Soleil</h2>
+    </a>
     <br>
     <img src="${img}">`
       

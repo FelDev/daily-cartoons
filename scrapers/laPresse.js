@@ -12,7 +12,10 @@ export async function getPresseImg() {
     const doc2 = new JSDOM(resPage2.body).window.document
     const img = doc2.querySelector(".photoModule__visual").src
 
-    return `<h2>La Presse</h2>
+    return `
+    <a href="${url}">
+      <h2>La Presse</h2>
+    </a>
     <br>
     <img src="${img}">
     <br>`

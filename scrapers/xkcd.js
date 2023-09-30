@@ -15,7 +15,10 @@ export async function getXkcdImg() {
     const xkcdImg = doc.querySelector("#comic img").src
     const xkcdImgClean = xkcdImg.replace("//", "https://")
     
-    return `<h2>xkcd</h2>
+    return `
+    <a href="${url}">
+      <h2>xkcd</h2>
+    </a>
     <br>
     <img src="${xkcdImgClean}">`
   } catch (err) {

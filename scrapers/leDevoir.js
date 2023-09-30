@@ -12,7 +12,10 @@ export async function getDevoirImg() {
     const doc2 = new JSDOM(resPage2.body).window.document
     const img = doc2.getElementById("photo_courante").src
     
-    return `<h2>Le Devoir</h2>
+    return `
+    <a href="${url}">
+      <h2>Le Devoir</h2>
+    </a>
     <br>
     <img src="${img}">
     <br>`

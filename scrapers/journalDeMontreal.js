@@ -16,9 +16,13 @@ export async function getJdmImg() {
     // imageURL.search = searchParams.toString();
     // let newImageUrl = imageURL.toString();
 
-    return `<h2>Journal de Montréal</h2>
+    return `
+    <a href="${url}">
+      <h2>Journal de Montréal</h2>
+    </a>
     <br>
-    <img src="${cleanImageUrl}">`
+    <img src="${cleanImageUrl}">
+    `
     
   } catch (err) {
     console.log('@err: ', err)
