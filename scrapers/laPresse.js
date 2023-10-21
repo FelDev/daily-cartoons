@@ -1,7 +1,7 @@
 import got from 'got'
 import jsdom from 'jsdom'
 const { JSDOM } = jsdom
-const url = "https://www.lapresse.ca/debats/caricatures/"
+const url = "https://www.lapresse.ca/actualites/caricatures/"
 
 export async function getPresseImg() {
   try {
