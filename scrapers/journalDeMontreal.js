@@ -2,22 +2,21 @@ import got from 'got'
 import jsdom from 'jsdom'
 const { JSDOM } = jsdom
 const url = "https://www.journaldemontreal.com/opinions/caricatures"
+let cartoonURL
 
 export async function getJdmImg() {
   try {
-    const response = await got(url)
-    const doc = new JSDOM(response.body).window.document
-    const srcset = doc.querySelector("#landingSection .cartoon-item img").srcset
-    let imageUrlString = srcset.split(',')[0].trim();
+    const resPage1 = await got(url)
+    const doc1 = new JSDOM(resPage1.body).window.document
+    cartoonURL = doc1.querySelector(".cartoon-img > a").href
+
+    const srcset = doc1.querySelector(".cartoon-img img").srcset
+    let imageUrlString = srcset.split(',')[1].trim();
+    
     let cleanImageUrl = `${imageUrlString.split("?")[0]}?impolicy=resize&width=1000` // remove query params, replace with simple resize
-    // let imageURL = new URL(imageUrlString);
-    // let searchParams = new URLSearchParams(imageURL.search);
-    // searchParams.set('width', '1000');
-    // imageURL.search = searchParams.toString();
-    // let newImageUrl = imageURL.toString();
 
     return `
-    <a href="${url}">
+    <a href="${cartoonURL}">
       <h2>Journal de Montréal</h2>
     </a>
     <br>
@@ -27,6 +26,6 @@ export async function getJdmImg() {
   } catch (err) {
     console.log('@err: ', err)
     
-    return "<p>Le Journal de Montréal ça chié...</p>"
+    return `<p>Le Journal de Montréal ça chié...<a href="${cartoonURL}"> </a></p>`
   }
 }
