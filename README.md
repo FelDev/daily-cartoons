@@ -1,6 +1,6 @@
 # Daily Cartoons
 
-Automated web scraping of cartoons sent to my inbox.
+Automated web scraping of cartoons sent to my email inbox.
 
 Running on GitHub Actions.
 
